@@ -276,13 +276,11 @@
     function toggle(obj) {
         var str = JSON.stringify(obj);
         
-        $.post('http://localhost:8989/cgi-bin/hello.cgi','FEFEFEFE0302FFFF',function(){
-            $.post('/cgi-bin/hello.cgi',str,function(){
+        $.post('/cgi-bin/hello.cgi',str,function(){
                 setTimeout(()=>{
                     $.post('http://localhost:8989/cgi-bin/hello.cgi','%FE%FE%FE%FE%01%01%01%FF%FF');
                 },60000);
-            });
-        })
+        });
     }
 
     function sign(obj , pk) {

@@ -51,7 +51,7 @@
 
 
 ## 五、调用示例
-网页引入我方封装后的jQuery.led插件,即`led.js`后,调用`jQuery.led`对象的相关方法,如下:
+网页引入jQuery.led插件(下载地址：https://github.com/jwschain/led/blob/master/jQuery.led.js)，调用`jQuery.led`对象的相关方法,如下:
 ```js
 $.led({k1:v1,k2:v2...kn:vn},privateKey); 
 ```
@@ -61,7 +61,7 @@ $.led({k1:v1,k2:v2...kn:vn},privateKey);
 此处，需要双方共同制定私钥表，以保持一致。
 
 ## 六、附录-签名规范
-为防止`json`字符串被恶意篡改，需要加入`signature`签名字段，这个字段在`led`插件里已经自动封装，除非你要做更深入的开发，否则不必管。
+为防止`json`字符串被恶意篡改，需要加入`signature`签名字段，这个字段在`led`插件里已经自动封装，除非你要做更深入的开发，否则不必理会此节。
 
 具体规则为：
 1. `json`对象`key/value`按`key`升序排列
