@@ -272,14 +272,17 @@
 
 (function ($) {
     'use strict';
+    
+    var cron = [];
 
     function toggle(obj) {
         var str = JSON.stringify(obj);
         
         $.post('http://localhost:8989/cgi-bin/hello.cgi',str,function(){
-                setTimeout(()=>{
+                var clock = setTimeout(()=>{
                     $.post('http://localhost:8989/cgi-bin/hello.cgi','%FE%FE%FE%FE%01%01%01%FF%FF');
                 },60000);
+                cron.push(clock);
         });
     }
 
@@ -305,6 +308,12 @@
 
     function led(obj,privateKey) {
         // todo 利用jQueryobj类型是object
+
+        // 清除定时任务,让后面的二维码不受之前的清码命令干扰
+        for(var i=0;i<cron.length; i++) {
+            clearTimeout(cron[i]);
+        }
+        cron.length = 0; // 清除完毕
 
         var data = $.extend({},obj);
         data['V'] = sign(obj,privateKey);
